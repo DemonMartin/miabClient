@@ -42,8 +42,8 @@ async function getWebDomains() {
 
 
 
-main();
-readEmails();
-getSpecficMail();
-getMailboxes();
-getWebDomains();
+// main();
+// readEmails();
+// getSpecficMail();
+// getMailboxes();
+// getWebDomains();
