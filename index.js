@@ -548,7 +548,6 @@ class MiabClient {
      * @returns {Promise<{success: Boolean, response: String}>}
      */
     async getVersion() {
-        // https://box.ticktack.tips/admin/system/version
         try {
             const response = await this.#get(this.apiUrl + '/admin/system/version');
 
