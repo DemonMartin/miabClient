@@ -7,7 +7,28 @@
   "scripts": {
     "test": "node test.js"
   },
-  "keywords": [],
+  "keywords": [
+    "mail-in-a-box",
+    "mailinabox",
+    "miab",
+    "mail",
+    "box",
+    "email",
+    "api",
+    "client",
+    "email-client",
+    "emailgenerator",
+    "generator",
+    "kopeechka",
+    "kopeechka-store",
+    "hotmailbox",
+    "miab",
+    "tempmail",
+    "roundcube",
+    "roundcubemail",
+    "roundcube-mail",
+    "emails"
+  ],
   "author": "Demon Martin",
   "license": "ISC",
   "dependencies": {
