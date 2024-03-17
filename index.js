@@ -287,8 +287,18 @@ class MiabClient {
      * @param {String} options.subject - The email subject.
      * @returns {ParsedMail[]}
      */
-    filterEmails(emails, options) {
-        const { regex, from, subject } = options;
+    filterEmails(emails, options = {}) {
+        let { regex = [], from = '', subject = '' } = options;
+
+        if (!Array.isArray(regex)) {
+            console.error('The regex option must be an array. Trying to experimentally convert it to an array.');
+
+            if (this.#isRegex(regex) || typeof regex === 'string') {
+                regex = [regex];
+            } else {
+                throw new Error('The regex option must be an array and either a valid string or regex. Failed to experimentally convert it to an array.');
+            }
+        }
 
         return emails.filter(email => {
             // Check if the email matches the regex patterns.
