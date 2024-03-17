@@ -290,6 +290,10 @@ class MiabClient {
     filterEmails(emails, options = {}) {
         let { regex = [], from = '', subject = '' } = options;
 
+        if (regex.length === 0 && from === '' && subject === '') {
+            throw new Error('At least one option must be specified. All options cannot be default values.');
+        }
+
         if (!Array.isArray(regex)) {
             console.error('The regex option must be an array. Trying to experimentally convert it to an array.');
 
@@ -302,14 +306,14 @@ class MiabClient {
 
         return emails.filter(email => {
             // Check if the email matches the regex patterns.
-            const regexMatch = regex.some(r => {
+            const regexMatch = Array.isArray(regex) ? regex.some(r => {
                 if (this.#isRegex(r)) {
                     const regex = new RegExp(r);
                     return regex.test(email.textAsHtml) || regex.test(email.text);
                 } else {
                     return email.textAsHtml.includes(r) || email.text.includes(r);
                 }
-            });
+            }) : true;
 
             // Check if the email is from the specified sender.
             const fromMatch = from ? email.from.text.includes(from) : true;
